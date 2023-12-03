@@ -9,31 +9,36 @@ exports.createUser = (req, res) => {
     })
   );
 };
-
 exports.getUsers = async (req, res) => {
   const users = await User.find({});
   res.json({
     users,
   });
 };
-
-exports.updateUser = async(req,res) => {
-    const id = req.params.id
-    const {name,email,age} = req.body
-    const getUser = await User.findById(id)
-   if(getUser){
-    const updated = await User.findByIdAndUpdate(id,{name,email,age})
+exports.updateUser = async (req, res) => {
+  const id = req.params.id;
+  const { name, email, age } = req.body;
+  const getUser = await User.findById(id);
+  if (getUser) {
+    const updated = await User.findByIdAndUpdate(id, { name, email, age });
     res.json({
-      updated
-    })
-   }
-}
+      updated,
+    });
+  }
+};
 
-
-exports.deleteUser = async (req,res) => {
-  const id = req.params.id
-  const deleted = await User.findByIdAndDelete(id)
+exports.deleteUser = async (req, res) => {
+  const id = req.params.id;
+  const deleted = await User.findByIdAndDelete(id);
   res.json({
-    deleted
+    deleted,
+  });
+};
+
+exports.getUserById = async (req,res) => {
+  const id = req.params.id
+  const gotUser = await User.findById(id)
+  res.json({
+    gotUser
   })
 }

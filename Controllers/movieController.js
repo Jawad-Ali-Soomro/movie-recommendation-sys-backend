@@ -34,3 +34,11 @@ exports.getMoviesWithAge = async (req, res) => {
     console.log(error.message);
   }
 };
+
+exports.getSingleMovie = async (req,res) => {
+  const id = req.params.id
+  const gotMovie = await Movie.findById(id)
+  res.json({
+    gotMovie
+  })
+}
