@@ -17,15 +17,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-  movies: [
-    {
-      id: {
-        type: String,
-        ref: 'movie'
-      }
-    }
-  ]
+  }
 });
 const User = mongoose.model("User" , userSchema)
 module.exports = User

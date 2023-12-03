@@ -8,20 +8,12 @@ const movieSchema = new mongoose.Schema({
   duration: {
     type: String,
   },
-  ratings: [
-    {
-      stars: Number,
-      message: String,
-      id: {
-        type: String,
-        ref: "user",
-      },
-    },
-  ],
-  creator: {
-    type: String,
-    ref: "user",
+  captions: {
+    type: String
   },
+  agelimit: {
+    type: Number
+  }
 });
 
 const Movie = mongoose.model("Movie", movieSchema);

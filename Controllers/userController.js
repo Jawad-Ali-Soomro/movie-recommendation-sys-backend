@@ -16,3 +16,24 @@ exports.getUsers = async (req, res) => {
     users,
   });
 };
+
+exports.updateUser = async(req,res) => {
+    const id = req.params.id
+    const {name,email,age} = req.body
+    const getUser = await User.findById(id)
+   if(getUser){
+    const updated = await User.findByIdAndUpdate(id,{name,email,age})
+    res.json({
+      updated
+    })
+   }
+}
+
+
+exports.deleteUser = async (req,res) => {
+  const id = req.params.id
+  const deleted = await User.findByIdAndDelete(id)
+  res.json({
+    deleted
+  })
+}
